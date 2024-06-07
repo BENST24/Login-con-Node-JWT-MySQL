@@ -30,7 +30,7 @@ Ejecuta la aplicación:
 
 npm start
 
-Abre tu navegador y accede a http://localhost:3000 para ver la aplicación en funcionamiento.
+Abre tu navegador y accede a http://localhost:5000 para ver la aplicación en funcionamiento.
 
 ## Notas
 
