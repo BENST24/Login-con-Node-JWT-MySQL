@@ -1,0 +1,148 @@
+/* html,
+body {
+  height: 100%;
+  background-image: url('../img/Sing_in.jpg');
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo 
+  background-position: center; /* Centra la imagen *
+  background-repeat: no-repeat; /* Evita que la imagen se repita *
+  height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla *
+  margin: 0; /* Elimina márgenes por defecto *
+}
+
+.form-signin {
+  text-align: center;
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin .form-floating{
+  margin-bottom: 1em;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+} */
+
+/* General styles for body and background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('../img/Sing_in.jpg'); /* La imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+/* Main container styles */
+main {
+  display: flex;
+  padding-top: 5%;
+  padding-left: 35%;
+  /*justify-content: flex-start;  Para alinear el contenido a la izquierda */
+  align-items: flex-start; /* Para mover el contenido hacia arriba */
+  height: 100vh;
+}
+
+/* Form styles */
+form {
+  background-color: rgba(255, 255, 255, 0.2);  
+  /* background-image: linear-gradient(
+      0deg,
+    rgba(0,0,0,0.1),
+    rgba(0,0,0,0.0)
+  ); */
+  padding: 30px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 50px 50px; /* Ajustar para mover el formulario */
+}
+
+/* Logo styles */
+.logo {
+  margin-bottom: 20px;
+}
+
+/* Input styles */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+label[for="correo"] {
+  color: #fff; /* Este es el color específico para el label del correo */
+}
+
+label[for="pass"] {
+  color: #fff; /* Este es el color específico para el label de la contraseña */
+}
+
+
+input::placeholder {
+  color: #888;
+}
+
+/* Button styles */
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #6a00ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #5000cc;
+}
+
+/* Check-in button */
+.checkin-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkin-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Adjust form heading */
+h1 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}

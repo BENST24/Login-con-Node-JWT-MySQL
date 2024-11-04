@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="../assets/js/color-modes.js"></script>
 
@@ -95,7 +95,7 @@
     </style>
 
     
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template 
     <link href="css/sign-in.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
   </head>
@@ -154,7 +154,7 @@
     
 <main class="form-signin --w-100 m-auto text-center shadow-lg p-3 mb-5">
   <form id="formlogin" action="/login" method="post">
-    <img class="mb-4" src="img/logo_login.png" alt="" width="100" height="100">
+    <img class="mb-4" src="img/logo2.png" alt="" width="100" height="100">
     <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
     <div class="form-floating">
@@ -167,12 +167,12 @@
     </div>
 
     <button class="btn btn-bd-primary w-100 py-2" type="submit">Login</button>
-    <!-- <p class="mt-5 mb-3 text-body-secondary">&copy; </p> -->
+    <!-- <p class="mt-5 mb-3 text-body-secondary">&copy; </p> 
   </form>
   <a href="/register" type="button" class="btn btn-primary w-100 py-2">Check in</a>
 </main>
 
-  <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
+  <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <% if(alert) { %>
       <script>
@@ -189,4 +189,49 @@
     <% } %> 
   
   </body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/sign_in.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+  <main>
+    <form id="formlogin" action="/login" method="post">
+      <img src="img/logo2.png" alt="Logo" width="100" height="100" class="logo">
+      <h1>Iniciar sesión</h1>
+
+      <div>
+        <label for="correo">Correo electrónico</label>
+        <input type="text" id="correo" name="correo" placeholder="Ejemplo: jhondoe@example.com">
+      </div>
+      
+      <div>
+        <label for="pass">Contraseña</label>
+        <input type="password" id="pass" name="pass" placeholder="**********">
+      </div>
+
+      <button type="submit">Iniciar sesión</button>
+      <a href="/register" type="button" class="checkin-btn">Registrarse</a>
+    </form>
+  </main>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(alert) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+      }).then(()=>{
+        window.location = '/<%= ruta %>'
+      })
+    </script>
+  <% } %> 
+</body>
 </html>

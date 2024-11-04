@@ -1,100 +1,146 @@
+/* .navbar-brand {
+  margin-right: auto; /* Empuja la marca hacia la izquierda 
+  padding-left: 2%;
+}
+
+.navbar-nav {
+  align-items: center; /* Centra verticalmente el contenido 
+}
+
+#username {
+  margin-left: 10px; /* Añade espacio entre "Bienvenido:" y el nombre de usuario 
+} */
+
 body {
-  font-size: .875rem;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.5)
+  ), url('../img/20860-musica.jpg');
+  /* background-image: url('../img/20860-musica.jpg'); */
+  background-size: cover;
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* color: white; */
 }
 
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
+/* .navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  color: #fff;
 }
 
-/*
- * Sidebar
- */
+.navbar .navbar-brand {
+  color: #fff;
+} */
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  /* rtl:raw:
-  right: 0;
-  */
-  bottom: 0;
-  /* rtl:remove */
-  left: 0;
-  z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+/* Estilos de la barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Color de fondo negro translúcido */
+  padding: 15px; /* Espaciado interno */
+  color: white;
 }
-
-@media (max-width: 767.98px) {
-  .sidebar {
-    top: 5rem;
-  }
-}
-
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-}
-
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-}
-
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #727272;
-}
-
-.sidebar .nav-link.active {
-  color: #2470dc;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
-
-/*
- * Navbar
- */
 
 .navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none; /* Sin subrayado */
 }
 
-.navbar .navbar-toggler {
-  top: .25rem;
-  right: 1rem;
+#hero .container{
+  display: flex; 
 }
 
-.navbar .form-control {
-  padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
+.button a {
+  padding: 10px 20px; /* Espaciado interno (equivalente a px-3) */
+  background-color: #dc3545; /* Color de fondo rojo, equivalente a btn-danger */
+  color: white; /* Color del texto */
+  text-decoration: none; /* Sin subrayado */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease; /* Transición suave */
 }
 
-.form-control-dark {
+.button a:hover {
+  background-color: #851823; /* Color más oscuro al pasar el mouse, similar a btn-danger hover */
+}
+
+/* .btn {
+  background-color: #ff5f5f;
   color: #fff;
-  background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
 }
 
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+.btn:hover {
+  background-color: #e04747;
+}  */
+
+.list-group-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  margin-left: 50%;
+  margin-right: 20%;
 }
+
+.list-group-item a {
+  color: #e93144;
+}
+
+.list-group-item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: blue;
+}
+
+.list-group-item a:hover {
+  color:blue;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+} 
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  border-radius: 5px;
+}
+
+#hero h2 {
+  margin: 3%;
+  font-size: 3em;
+  color: #fff;
+}
+
+#hero h3 {
+  width: 75%; /* O establece un ancho máximo */
+  margin-left: 6%;
+  font-size: 2em;
+  color: #fff;
+}
+
+.sidebar {
+  float: left;
+  width: 100%;
+  margin-top: 5%;
+}
+
+/* .content {
+  float: right;
+  width: 70%;
+} */

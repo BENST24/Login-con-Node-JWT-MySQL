@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Álbumes</title>
+</head>
+<body>
+    <h1>Gestión de Álbumes</h1>
+
+    <!-- Formulario para agregar un álbum -->
+<form action="/albums/create" method="POST" enctype="multipart/form-data">
+    <label for="title">Título del álbum:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="date_realese">Fecha de lanzamiento:</label>
+    <input type="date" id="date_realese" name="date_realese" required>
+
+    <label for="gender">Género:</label>
+    <input type="text" id="gender" name="gender" required>
+
+    <label for="coverImage">Portada del álbum:</label>
+    <input type="file" id="coverImage" name="coverImage" accept="image/*" required>
+
+    <button type="submit">Agregar Álbum</button>
+</form>
+
+    <!-- Lista de álbumes -->
+    <h2>Álbumes existentes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Fecha de lanzamiento</th>
+                <th>Género</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% albums.forEach(album => { %>
+                <tr>
+                    <td>
+                        <% if (album.coverImage) { %>
+                            <img src="<%= album.coverImage %>" alt="<%= album.title %> Cover" width="100">
+                        <% } %>
+                    </td>
+                    <td><%= album.title %></td>
+                    <td><%= album.date_realese %></td>
+                    <td><%= album.gender %></td>
+                    <td>
+                        <!-- Formulario para actualizar -->
+                        <form action="/albums/update" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<%= album.id %>">
+                            
+                            <!-- Título del álbum -->
+                            <input type="text" name="title" value="<%= album.title %>" required>
+                            <!-- Fecha de lanzamiento -->
+                            <input type="date" name="date_realese" value="<%= album.date_realese %>" required>
+                            <!-- Género -->
+                            <input type="text" name="gender" value="<%= album.gender %>" required>
+                            <!-- Mostrar la imagen de portada actual (si existe) -->
+                            <% if (album.coverImage) { %>
+                                <img src="<%= album.coverImage %>" alt="Portada del álbum" style="width: 100px; height: 100px;">
+                            <% } %>
+                            <!-- Campo para actualizar la imagen de portada -->
+                            <label for="coverImage">Actualizar imagen de portada:</label>
+                            <input type="file" name="coverImage">
+
+                            <!-- Botón de Actualizar -->
+                            <button type="submit">Actualizar</button>
+                        </form>
+                        
+                        <!-- Botón para eliminar -->
+                        <a href="/albums/delete/<%= album.id %>">Eliminar</a>
+                    </td>
+                </tr>
+                <!-- Formulario para agregar Pistas al álbum -->
+                <!-- <tr>
+                    <td colspan="4">
+                        <form action="/tracks/create" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="albumId" value="<%= album.id %>">
+                            <label for="title">Título de la pista:</label>
+                            <input type="text" name="title" required>
+                            
+                            <label for="date_realese">Fecha de lanzamiento:</label>
+                            <input type="date" name="date_realese" required>
+                            
+                            <label for="gender">Género:</label>
+                            <input type="text" name="gender" required>
+                            
+                            <label for="trackFile">Archivo de la pista:</label>
+                            <input type="file" name="trackFile" required>
+                            
+                            <button type="submit">Agregar Pista</button>
+                        </form>
+
+                        <!-- Lista de Pistas asociadas --
+                        <h4>Pistas asociadas</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Fecha de lanzamiento</th>
+                                    <th>Género</th>
+                                    <th>Archivo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% tracks.forEach(track => { %>
+                                    <% if (track.albumId === album.id) { %>
+                                        <tr>
+                                            <td><%= track.title %></td>
+                                            <td><%= track.date_realese %></td>
+                                            <td><%= track.gender %></td>
+                                            <td><a href="<%= track.filePath %>">Escuchar</a></td>
+                                            <td>
+                                                <!-- Formulario para actualizar --
+                                                <form action="/tracks/update" method="POST">
+                                                    <input type="hidden" name="id" value="<%= track.id %>">
+                                                    <input type="text" name="title" value="<%= track.title %>" required>
+                                                    <input type="date" name="date_realese" value="<%= track.date_realese %>" required>
+                                                    <input type="text" name="gender" value="<%= track.gender %>" required>
+                                                    <input type="hidden" name="albumId" value="<%= album.id %>">
+                                                    <button type="submit">Actualizar</button>
+                                                </form>
+                                                
+                                                <!-- Botón para eliminar --
+                                                <a href="/tracks/delete/<%= track.id %>?albumId=<%= album.id %>">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr> -->
+                <!-- Formulario para agregar Pistas al álbum -->
+                <tr>
+                    <td colspan="4">
+                        <form action="/tracks/create" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="albumId" value="<%= album.id %>">
+                            
+                            <label for="title">Título de la pista:</label>
+                            <input type="text" name="title" required>
+                            
+                            <label for="date_realese">Fecha de lanzamiento:</label>
+                            <input type="date" name="date_realese" required>
+                            
+                            <label for="gender">Género:</label>
+                            <input type="text" name="gender" required>
+                            
+                            <label for="trackFile">Archivo de la pista:</label>
+                            <input type="file" name="trackFile" required>
+                            
+                            <label for="coverImage">Portada de la pista:</label>
+                            <input type="file" name="coverImage" required>
+                            
+                            <button type="submit">Agregar Pista</button>
+                        </form>
+
+                        <!-- Lista de Pistas asociadas -->
+                        <h4>Pistas asociadas</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Portada</th>
+                                    <th>Título</th>
+                                    <th>Fecha de lanzamiento</th>
+                                    <th>Género</th>
+                                    <th>Archivo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% tracks.forEach(track => { %>
+                                    <% if (track.albumId === album.id) { %>
+                                        <tr>
+                                            <td><img src="<%= track.coverImage %>" alt="Portada de la pista" width="50"></td>
+                                            <td><%= track.title %></td>
+                                            <td><%= track.date_realese %></td>
+                                            <td><%= track.gender %></td>
+                                            <td><a href="<%= track.filePath %>">Escuchar</a></td>
+                                            <td>
+                                                <!-- Formulario para actualizar -->
+                                                <form action="/tracks/update" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="id" value="<%= track.id %>">
+                                                    <input type="text" name="title" value="<%= track.title %>" required>
+                                                    <input type="date" name="date_realese" value="<%= track.date_realese %>" required>
+                                                    <input type="text" name="gender" value="<%= track.gender %>" required>
+                                                    <label for="coverImage">Cambiar portada:</label>
+                                                    <input type="file" name="coverImage">
+                                                    <input type="hidden" name="albumId" value="<%= album.id %>">
+                                                    <button type="submit">Actualizar</button>
+                                                </form>
+                                                
+                                                <!-- Botón para eliminar -->
+                                                <a href="/tracks/delete/<%= track.id %>?albumId=<%= album.id %>">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,53 +1,44 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <style>
-    body {  
-      /* display: flex; */
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color:rgba(255,255,255,0.95);
-    }
-    </style>
     <title>Login con Node + JWT + MySQL</title>
   </head>
   <body>
 
 <div class="container">
     <div class="row">
+      <div class="registerst">
         <div class="col-lg-12 shadow-lg p-3 mb-5">
-
-          <div class="card border-primary">
-            <div class="card-header bg-primary text-white">Registrarse</div>
-            <div class="card-body text-primary">
-              <form action="/register" method="POST">        
-                <div class="mb-3">
-                    <label for="correo" class="form-label">Correo electronico</label>
-                    <input id="correo" name="correo" type="text" class="form-control" aria-describedby="emailHelp">              
-                </div>
-                <div class="mb-3">
-                    <label for="user" class="form-label">Nombre de usuario</label>
-                    <input id="user" name="user" type="text" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="pass" class="form-label">Contraseña</label>
-                    <input id="pass" name="pass" type="password" class="form-control">
-                </div>                            
-            </div>
-            <div class="card-footer bg-transparent border-primary">
-              <a href="/" type="button" class="btn btn-secondary">Cancelar</a>
-              <button type="submit" class="btn btn-primary">Registrar</button>
-            </div>
-            </form>
-          </div>   
-    
+            <div class="card border-primary">
+              <div class="card-header bg-primary text-white">Registrarse</div>
+              <div class="card-body text-primary">
+                <form action="/register" method="POST">        
+                  <div class="mb-3">
+                      <label for="correo" class="form-label">Correo electronico</label>
+                      <input id="correo" name="correo" type="text" class="form-control" aria-describedby="emailHelp">              
+                  </div>
+                  <div class="mb-3">
+                      <label for="user" class="form-label">Nombre de usuario</label>
+                      <input id="user" name="user" type="text" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                      <label for="pass" class="form-label">Contraseña</label>
+                      <input id="pass" name="pass" type="password" class="form-control">
+                  </div>                            
+              </div>
+              <div class="card-footer bg-transparent border-primary">
+                <a href="/" type="button" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+              </div>
+              </form>
+            </div>   
+          </div>
         </div>
     </div>
 </div>
@@ -70,4 +61,54 @@
     <% } %> 
     
   </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+
+    <div class="register-container">
+        <form action="/register" method="POST" class="register-box">
+            <h2>Registrarse</h2>
+            <div class="form-group">
+                <label for="correo">Correo electronico</label>
+                <input id="correo" name="correo" type="email" required>
+            </div>
+            <div class="form-group">
+                <label for="user">Nombre de usuario</label>
+                <input id="user" name="user" type="text" required>
+            </div>
+            <div class="form-group">
+                <label for="pass">Contraseña</label>
+                <input id="pass" name="pass" type="password" required>
+            </div>
+            <div class="button-group">
+                <a href="/" class="btn cancel">Cancelar</a>
+                <button type="submit" class="btn submit">Registrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(alert) { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle %>',
+          text: '<%= alertMessage %>',
+          icon: '<%= alertIcon %>',
+          showConfirmButton: <%= showConfirmButton %>,
+          timer: <%= timer %>
+        }).then(()=>{
+          window.location = '/<%= ruta %>'
+        })
+      </script>
+    <% } %> 
+    
+</body>
 </html>
