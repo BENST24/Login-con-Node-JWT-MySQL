@@ -6,7 +6,7 @@
   <meta name="description" content="Dashboard para gestionar música">
   <meta name="author" content="Benjamín Steck">
   <title>Un Mar de Música</title>
-  <link href="/css/dashboard.css" rel="stylesheet"> <!-- Enlace al archivo CSS personalizado -->
+  <link href="/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -21,9 +21,12 @@
     </header>
 
     <section id="hero">
+        <!-- <h2>Bienvenido: <span id="username"></span></h2> -->
         <h2>Bienvenido: <span id="username"></span></h2>
-
+        
+        
         <div class="container">
+          <!-- <h3><span id="userdescription"></span></h3> -->
           <h3><span id="userdescription"></span></h3>
 
           <div class="sidebar">
@@ -37,7 +40,7 @@
       </div>
     </section>
 
-    <script>
+    <!-- <script>
       document.addEventListener('DOMContentLoaded', function() {
           // Obtener el nombre y descripción del usuario
           var nombreUsuario = "<%= correo ? correo.user : '' %>";
@@ -47,6 +50,35 @@
           document.getElementById('username').textContent = nombreUsuario;
           document.getElementById('userdescription').textContent = descripcionUsuario;
       });
-    </script>
+    </script> -->
+
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Verifica si 'correo' está disponible
+          var nombreUsuario = "<%= correo ? correo.user : '' %>";
+          var descripcionUsuario = "<%= correo ? correo.description : '' %>";
+  
+          // Asignar el texto a los elementos correspondientes
+          var nombreElemento = document.getElementById('username');
+          var descripcionElemento = document.getElementById('userdescription');
+  
+          if (nombreElemento) {
+              nombreElemento.innerText = nombreUsuario;
+          }
+          if (descripcionElemento) {
+              descripcionElemento.innerText = descripcionUsuario;
+          }
+      });
+  </script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var nombreUsuario = "<%= correo ? correo.user : '' %>";
+        var descripcionUsuario = "<%= correo ? correo.description : '' %>";
+        document.getElementById('username').textContent = nombreUsuario;
+        document.getElementById('userdescription').textContent = descripcionUsuario;
+    });
+  </script>
+  
+  
 </body>
 </html>

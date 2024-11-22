@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -19,5 +19,169 @@
         </div>
       <% }) %>
     </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistas del Artista</title>
+    <style>
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        header h3 {
+            margin: 0;
+        }
+        header a {
+            text-decoration: none;
+            color: #333;
+        }
+        header a:hover {
+            color: #007bff;
+        }
+
+        /* Estilos básicos para el contenedor */
+        .track-container {
+            border: 1px solid #ddd;
+            padding: 16px;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .delete-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <a href="/">
+        <h3>Un Mar de Música</h3>
+    </a>
+  </header>
+
+    <h1>Pistas del Artista</h1>
+
+    <!-- Menú Desplegable para Crear una Nueva Pista -->
+    <div>
+        <button class="toggle-button" onclick="toggleForm()">Crear Nueva Pista</button>
+        <div id="create-track-form" class="dropdown-menu">
+            <form action="/tracks/create" method="POST" enctype="multipart/form-data">
+                <label>Título de la Pista:</label>
+                <input type="text" name="title" required>
+
+                <label>Fecha de Lanzamiento:</label>
+                <input type="date" name="date_realese">
+
+                <label>Género:</label>
+                <input type="text" name="gender">
+
+                <label>Archivo de Pista:</label>
+                <input type="file" name="trackFile" accept="audio/*" required>
+
+                <label>Imagen de Portada:</label>
+                <input type="file" name="coverImage" accept="image/*">
+
+                <button type="submit">Crear Pista</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lista de Pistas -->
+    <div>
+        <% if (tracks.length > 0) { %>
+            <% tracks.forEach(track => { %>
+                <div class="track-container">
+                  <h4><%= track.title %></h4>
+                  <p>Género: <%= track.gender %></p>
+                  <p>Fecha de Lanzamiento: <%= track.date_realese %></p>
+      
+                  <% if (track.albumTitle) { %>
+                      <p>Álbum: <%= track.albumTitle %></p>
+                  <% } else if (track.singleTitle) { %>
+                      <p>Sencillo: <%= track.singleTitle %></p>
+                  <% } else { %>
+                      <p>Sin asociación</p>
+                  <% } %>      
+
+                    <% if (track.filePath) { %>
+                        <audio controls>
+                            <source src="<%= track.filePath %>" type="audio/mpeg">
+                            Tu navegador no soporta audio.
+                        </audio>
+                    <% } %>
+
+                    <% if (track.coverImage) { %>
+                        <img src="<%= track.coverImage %>" alt="Cover Image" width="100" height="100">
+                    <% } %>
+
+                    <!-- Menú Desplegable para Modificar la Pista -->
+                    <button class="toggle-button" onclick="toggleEditForm(<%= track.id %>)">Modificar</button>
+                    <div id="edit-form-<%= track.id %>" class="dropdown-menu">
+                        <form action="/tracks/update" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<%= track.id %>">
+
+                            <label>Título:</label>
+                            <input type="text" name="title" value="<%= track.title %>">
+
+                            <label>Fecha de Lanzamiento:</label>
+                            <input type="date" name="date_realese" value="<%= track.date_realese %>">
+
+                            <label>Género:</label>
+                            <input type="text" name="gender" value="<%= track.gender %>">
+
+                            <label>Imagen de Portada:</label>
+                            <input type="file" name="coverImage" accept="image/*">
+
+                            <button type="submit">Guardar Cambios</button>
+                        </form>
+                    </div>
+
+                    <!-- Botón para Eliminar Pista -->
+                    <form action="/tracks/delete/<%= track.id %>?" method="GET" class="delete-button">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No hay pistas disponibles.</p>
+        <% } %>
+    </div>
+
+    <script>
+        // Función para alternar el formulario de creación
+        function toggleForm() {
+            const form = document.getElementById("create-track-form");
+            form.classList.toggle("active");
+        }
+
+        // Función para alternar el formulario de modificación específico de cada pista
+        function toggleEditForm(trackId) {
+            const form = document.getElementById("edit-form-" + trackId);
+            form.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>

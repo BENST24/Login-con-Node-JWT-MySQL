@@ -8,6 +8,11 @@ const tracksController = require('../controllers/tracksController');
 // Ruta para el index
 router.get('/', authController.isAuthenticated, authController.infoArtist);
 
+router.get('/index', (req, res) => {
+    const correo = req.session?.user?.correo; // Asegúrate de obtener la información de `correo` de la sesión si está disponible
+    res.render('index', { correo });
+});
+
 // Rutas para login y registro
 router.get('/login', (req, res) => {
     res.render('login', { alert: false });

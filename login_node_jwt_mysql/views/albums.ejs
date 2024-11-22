@@ -7,24 +7,31 @@
     <title>Gestión de Álbumes</title>
 </head>
 <body>
+
+    <header>
+        <a href="/">
+            <h3>Un Mar de Música</h3>
+        </a>
+      </header>
+
     <h1>Gestión de Álbumes</h1>
 
     <!-- Formulario para agregar un álbum -->
-<form action="/albums/create" method="POST" enctype="multipart/form-data">
-    <label for="title">Título del álbum:</label>
-    <input type="text" id="title" name="title" required>
+    <form action="/albums/create" method="POST" enctype="multipart/form-data">
+        <label for="title">Título del álbum:</label>
+        <input type="text" id="title" name="title" required>
 
-    <label for="date_realese">Fecha de lanzamiento:</label>
-    <input type="date" id="date_realese" name="date_realese" required>
+        <label for="date_realese">Fecha de lanzamiento:</label>
+        <input type="date" id="date_realese" name="date_realese" required>
 
-    <label for="gender">Género:</label>
-    <input type="text" id="gender" name="gender" required>
+        <label for="gender">Género:</label>
+        <input type="text" id="gender" name="gender" required>
 
-    <label for="coverImage">Portada del álbum:</label>
-    <input type="file" id="coverImage" name="coverImage" accept="image/*" required>
+        <label for="coverImage">Portada del álbum:</label>
+        <input type="file" id="coverImage" name="coverImage" accept="image/*" required>
 
-    <button type="submit">Agregar Álbum</button>
-</form>
+        <button type="submit">Agregar Álbum</button>
+    </form>
 
     <!-- Lista de álbumes -->
     <h2>Álbumes existentes</h2>

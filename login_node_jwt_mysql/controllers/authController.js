@@ -5,6 +5,7 @@ const { promisify } = require('util');
 // const { error } = require('console'); 
 const { query } = require('./utils');
 
+
 exports.infoArtist = async (req, res) => {
     if (!req.artist || !req.artist.id) {
         return res.status(400).send('El usuario no está autenticado correctamente');
@@ -25,6 +26,29 @@ exports.infoArtist = async (req, res) => {
         res.status(500).send('Error en el servidor');
     }
 };
+
+// Controlador para obtener información del artista y renderizar la vista
+// exports.infoArtist = async (req, res) => {
+//     if (!res.locals.artist || !res.locals.artist.id) {
+//         return res.status(400).send('El usuario no está autenticado correctamente');
+//     }
+
+//     try {
+//         const artistId = res.locals.artist.id;
+
+//         // Obtener solo la información necesaria del artista
+//         const artistInfo = await query('SELECT user, description FROM artists WHERE id = ?', [artistId]);
+
+//         // Renderizar la vista `index` con los datos del artista
+//         res.render('index', {
+//             correo: artistInfo[0] || {} // Pasar el nombre de usuario y descripción a la vista
+//         });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).send('Error en el servidor');
+//     }
+// };
+
 
 exports.register = async (req, res) => {
     res.header('Cache-Control', 'no-store');
@@ -160,6 +184,47 @@ exports.isAuthenticated = async (req, res, next) => {
         res.redirect('/login');
     }
 };
+
+// Middleware de autenticación
+// exports.isAuthenticated = async (req, res, next) => {
+//     if (req.cookies.jwt) {
+//         try {
+//             // Decodificar el token JWT
+//             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO);
+
+//             console.log('Token decodificado:', decodificada);
+
+//             // Verificar que la decodificación tenga el ID del usuario
+//             if (!decodificada.id) {
+//                 return res.status(400).send('Token inválido: No contiene ID de usuario.');
+//             }
+
+//             // Consultar el artista por el ID decodificado
+//             connection.query('SELECT * FROM artists WHERE id = ?', [decodificada.id], (error, results) => {
+//                 if (error) {
+//                     console.error('Error en la consulta SQL:', error);
+//                     return res.status(500).send('Error en el servidor al consultar la base de datos');
+//                 }
+
+//                 console.log('Resultados de la consulta:', results);
+
+//                 // Verificar si se encontraron resultados
+//                 if (!results || results.length === 0) {
+//                     return res.status(401).send('Usuario no encontrado');
+//                 }
+
+//                 // Asignar el usuario a `res.locals.artist` para que esté disponible en las vistas
+//                 res.artist = results[0]; // Ahora artist será accesible en las vistas y en otros middleware
+//                 next(); // Continuar con la siguiente función
+//             });
+//         } catch (error) {
+//             console.log('Error al verificar JWT:', error);
+//             return res.status(401).send('Token inválido o expirado');
+//         }
+//     } else {
+//         res.redirect('/login'); // Redirigir si no hay token
+//     }
+// };
 
 exports.logout = (req, res) => {
     res.clearCookie('jwt');
