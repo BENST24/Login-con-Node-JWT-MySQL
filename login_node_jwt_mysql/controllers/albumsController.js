@@ -56,41 +56,6 @@ exports.createAlbum = [
     }
 ];
 
-// Actualizar un álbum
-// exports.updateAlbum = [
-//     upload.single('coverImage'), // Middleware para manejar la carga del archivo
-//     async (req, res) => {
-//         try {
-//             const { id, title, date_realese, gender } = req.body;
-//             let coverImagePath = null;
-
-//             // Si hay un nuevo archivo, lo manejamos
-//             if (req.file) {
-//                 coverImagePath = `/uploads/covers/${req.file.filename}`;
-//             }
-
-//             // Preparamos los datos para actualizar
-//             const updateData = {
-//                 title,
-//                 date_realese,
-//                 gender,
-//             };
-
-//             // Solo actualizar la imagen si hay un nuevo archivo
-//             if (coverImagePath) {
-//                 updateData.coverImage = coverImagePath;
-//             }
-
-//             await query('UPDATE albums SET ? WHERE id = ?', [updateData, id]);
-
-//             res.redirect('/albums');
-//         } catch (err) {
-//             console.error('Error al actualizar el álbum:', err);
-//             res.status(500).send('Error al actualizar el álbum');
-//         }
-//     }
-// ];
-
 exports.updateAlbum = [
     upload.single('coverImage'), 
     async (req, res) => {

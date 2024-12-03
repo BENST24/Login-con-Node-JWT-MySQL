@@ -5,6 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Álbumes</title>
+    <style>
+    header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    }
+    header h3 {
+        margin: 0;
+    }
+    header a {
+        text-decoration: none;
+        color: #333;
+    }
+    header a:hover {
+        color: #007bff;
+    }
+    </style>
 </head>
 <body>
 
@@ -82,68 +99,6 @@
                         <a href="/albums/delete/<%= album.id %>">Eliminar</a>
                     </td>
                 </tr>
-                <!-- Formulario para agregar Pistas al álbum -->
-                <!-- <tr>
-                    <td colspan="4">
-                        <form action="/tracks/create" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="albumId" value="<%= album.id %>">
-                            <label for="title">Título de la pista:</label>
-                            <input type="text" name="title" required>
-                            
-                            <label for="date_realese">Fecha de lanzamiento:</label>
-                            <input type="date" name="date_realese" required>
-                            
-                            <label for="gender">Género:</label>
-                            <input type="text" name="gender" required>
-                            
-                            <label for="trackFile">Archivo de la pista:</label>
-                            <input type="file" name="trackFile" required>
-                            
-                            <button type="submit">Agregar Pista</button>
-                        </form>
-
-                        <!-- Lista de Pistas asociadas --
-                        <h4>Pistas asociadas</h4>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Título</th>
-                                    <th>Fecha de lanzamiento</th>
-                                    <th>Género</th>
-                                    <th>Archivo</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% tracks.forEach(track => { %>
-                                    <% if (track.albumId === album.id) { %>
-                                        <tr>
-                                            <td><%= track.title %></td>
-                                            <td><%= track.date_realese %></td>
-                                            <td><%= track.gender %></td>
-                                            <td><a href="<%= track.filePath %>">Escuchar</a></td>
-                                            <td>
-                                                <!-- Formulario para actualizar --
-                                                <form action="/tracks/update" method="POST">
-                                                    <input type="hidden" name="id" value="<%= track.id %>">
-                                                    <input type="text" name="title" value="<%= track.title %>" required>
-                                                    <input type="date" name="date_realese" value="<%= track.date_realese %>" required>
-                                                    <input type="text" name="gender" value="<%= track.gender %>" required>
-                                                    <input type="hidden" name="albumId" value="<%= album.id %>">
-                                                    <button type="submit">Actualizar</button>
-                                                </form>
-                                                
-                                                <!-- Botón para eliminar --
-                                                <a href="/tracks/delete/<%= track.id %>?albumId=<%= album.id %>">Eliminar</a>
-                                            </td>
-                                        </tr>
-                                    <% } %>
-                                <% }); %>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr> -->
-                <!-- Formulario para agregar Pistas al álbum -->
                 <tr>
                     <td colspan="4">
                         <form action="/tracks/create" method="POST" enctype="multipart/form-data">

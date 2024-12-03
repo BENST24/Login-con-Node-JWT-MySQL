@@ -1,27 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Mis Sencillos</h2>
-    <div class="row">
-      <% singles.forEach(function(single) { %>
-        <div class="col-md-4">
-          <div class="card">
-            <h5 class="card-title"><%= single.title %></h5>
-            <p class="card-text"><%= single.description %></p>
-            <a href="/singles/<%= single.id %>/edit" class="btn">Modificar</a>
-            <a href="/singles/<%= single.id %>/delete" class="btn btn-danger">Eliminar</a>
-          </div>
-        </div>
-      <% }) %>
-    </div>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Sencillos</title>
+    <style>
+        header {
+        text-align: center;
+        padding: 20px;
+        background-color: #f2f2f2;
+        }
+
+        header h3 {
+            margin: 0;
+        }
+
+        header a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        header a:hover {
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
+
+    <header>
+        <a href="/">
+            <h3>Un Mar de Música</h3>
+        </a>
+      </header>
+
     <h1>Gestión de Sencillos</h1>
 
     <!-- Formulario para agregar un sencillo -->

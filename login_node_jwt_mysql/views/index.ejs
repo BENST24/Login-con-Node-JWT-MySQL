@@ -40,36 +40,6 @@
       </div>
     </section>
 
-    <!-- <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          // Obtener el nombre y descripción del usuario
-          var nombreUsuario = "<%= correo ? correo.user : '' %>";
-          var descripcionUsuario = "<%= correo ? correo.description : '' %>";
-          
-          // Asignar el texto a los elementos correspondientes
-          document.getElementById('username').textContent = nombreUsuario;
-          document.getElementById('userdescription').textContent = descripcionUsuario;
-      });
-    </script> -->
-
-    <!-- <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          // Verifica si 'correo' está disponible
-          var nombreUsuario = "<%= correo ? correo.user : '' %>";
-          var descripcionUsuario = "<%= correo ? correo.description : '' %>";
-  
-          // Asignar el texto a los elementos correspondientes
-          var nombreElemento = document.getElementById('username');
-          var descripcionElemento = document.getElementById('userdescription');
-  
-          if (nombreElemento) {
-              nombreElemento.innerText = nombreUsuario;
-          }
-          if (descripcionElemento) {
-              descripcionElemento.innerText = descripcionUsuario;
-          }
-      });
-  </script> -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
         var nombreUsuario = "<%= correo ? correo.user : '' %>";

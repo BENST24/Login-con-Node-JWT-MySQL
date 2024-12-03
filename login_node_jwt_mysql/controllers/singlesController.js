@@ -52,53 +52,6 @@ exports.createSingle = [
     }
 ];
 
-// exports.updateSingle = [
-//     upload.single('coverImage'), // Maneja la subida de una imagen de portada
-//     async (req, res) => {
-//         try {
-//             const { id, title, date_realese, gender } = req.body;
-//             let coverImagePath = null;
-
-//             // Si se ha subido una nueva imagen de portada, guardamos la nueva ruta
-//             if (req.file) {
-//                 coverImagePath = `/uploads/covers_singles/${req.file.filename}`;
-//             }
-
-//             // Obtener el sencillo actual para verificar la imagen de portada anterior
-//             const currentSingle = await query('SELECT coverImage FROM singles WHERE id = ?', [id]);
-
-//             if (currentSingle.length === 0) {
-//                 return res.status(404).send('Sencillo no encontrado');
-//             }
-
-//             const updateData = { title, date_realese, gender };
-//             if (coverImagePath) {
-//                 updateData.coverImage = coverImagePath;
-
-//                 // Eliminar la imagen de portada anterior si se ha subido una nueva
-//                 const oldCoverImage = currentSingle[0].coverImage;
-//                 if (oldCoverImage) {
-//                     const fullOldPath = path.join(__dirname, '../public/', oldCoverImage);
-//                     fs.unlink(fullOldPath, (err) => {
-//                         if (err) {
-//                             console.error('Error al eliminar la imagen anterior:', err);
-//                         } else {
-//                             console.log('Imagen de portada anterior eliminada:', fullOldPath);
-//                         }
-//                     });
-//                 }
-//             }
-
-//             // Actualizar el sencillo en la base de datos
-//             await query('UPDATE singles SET ? WHERE id = ?', [updateData, id]);
-//             res.redirect('/singles');
-//         } catch (err) {
-//             console.error('Error al actualizar el sencillo:', err);
-//             res.status(500).send('Error al actualizar el sencillo');
-//         }
-//     }
-// ];
-
 exports.updateSingle = [
     upload.single('coverImage'), 
     async (req, res) => {

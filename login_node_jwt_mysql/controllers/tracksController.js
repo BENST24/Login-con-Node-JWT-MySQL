@@ -21,22 +21,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
-// exports.tracks = async (req, res) => {
-//     try {
-//         const artistId = req.artist.id;
-//         const tracks = await query('SELECT * FROM tracks WHERE artistId = ?', [artistId]); // Cambiado
-
-//         res.render('tracks', {
-//             correo: req.artist,
-//             tracks: tracks || []
-//         });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Error en el servidor');
-//     }
-// };
-
 exports.tracks = async (req, res) => {
     try {
         const artistId = req.artist.id;
